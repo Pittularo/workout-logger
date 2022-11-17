@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Workout logger</title>
+</head>
+<body>
+	<h2>Log</h2>
+
+	<form action="" method="post">
+	  	<select id="exercise" name="exercise">
+	  	<option value=""></option>
+		  <option value="volvo">Bench press</option>
+		  <option value="mercedes">Deadlift</option>
+		  <option value="audi">Shoulder press</option>
+		  <option value="saab">Squats</option>
+		</select>
+
+		<br><br>
+
+	  	<input type="number" step="1" min="0" max="10" id="sets" name="sets" value="" required>
+	    <label for="sets">SETS x</label>
+
+	  	<input type="number" step="0.5" min="0" max="100" id="reps" name="reps" value="" required>
+	    <label for="reps">REPS x</label>
+
+	    <input type="number" step="1" min="0" max="100" id="weight" name="weight" value="" required>
+	    <label for="weight">KG</label>
+
+		<br><br>
+
+  		<input type="text" id="note" name="note" value="" placeholder="Note"><br><br>
+
+        <input type="button" id="conferma" value="Conferma" onclick="saveFile()" />
+	</form>
+</body>
+	<script>
+    let saveFile = () => {
+    	
+        // Get the data from each element on the form.
+    	const exercise = document.getElementById('exercise');
+        const sets = document.getElementById('sets');
+        const reps = document.getElementById('reps');
+        const weight = document.getElementById('weight');
+        
+        // This variable stores all the data.
+        let data = 
+            '\r Name: ' + exercise.value + ' \r\n ' + 
+            'Age: ' + sets.value + ' \r\n ' + 
+            'Email: ' + reps.value + ' \r\n ' + 
+            'Message: ' + weight.value;
+
+        // Convert the text to BLOB.
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = 'log.txt';	   // The file to save the data.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        newLink.click(); 
+
+    }
+	</script>
+</html>
