@@ -7,12 +7,30 @@
 </head>
 <body>
 	<form 
-	  method="POST" 
-	  action="https://script.google.com/macros/s/AKfycbyUNKDKpJpbqOWhkUwMsb7ihghyCGOcpgxRTkY9-adaHVgyb3guOrQNOm45Wt3VDNvs/exec"
-	>
-	  <input name="Email" type="email" placeholder="Email" required>
-	  <input name="Name" type="text" placeholder="Name" required>
-	  <button type="submit">Send</button>
+		method="POST" 
+		action="https://api.sheetmonkey.io/form/7QJpfBYDnYZn5ePqAPvMJZ"
+		>
+
+	  	<select id="exercise" name="exercise" required>
+			<option value=""></option>
+			<option value="volvo">Bench press</option>
+			<option value="mercedes">Deadlift</option>
+			<option value="audi">Shoulder press</option>
+			<option value="saab">Squats</option>
+		</select>
+
+		<input type="number" step="1" min="0" max="10" id="sets" name="sets" value="" required>
+		<label for="sets">SETS x</label>
+
+		<input type="number" step="0.5" min="0" max="100" id="reps" name="reps" value="" required>
+		<label for="reps">REPS x</label>
+
+		<input type="number" step="1" min="0" max="100" id="weight" name="weight" value="" required>
+		<label for="weight">KG</label>
+
+		<input type="text" id="note" name="note" value="" placeholder="Note"><br><br>
+
+		<button type="submit">Conferma</button>
 	</form>
 </body>
 </html>
