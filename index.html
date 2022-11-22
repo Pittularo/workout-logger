@@ -3,8 +3,89 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Prova 123 prova 123</title>
+	<title>Offline logger</title>
+	<script>
+	function get_date(){
+		var ora = new Date().toISOString().slice(0, 19).replace('T',' ');
+	 	document.getElementById("date").value = ora;
+	 }
+	function create_tr(table_id) {
+	    let table_body = document.getElementById(table_id),
+	        first_tr   = table_body.children[0]
+	        tr_clone   = first_tr.cloneNode(true);
+
+	    table_body.append(tr_clone);
+
+	    // clean_first_tr(table_body.firstElementChild);
+	}
+
+	function clean_first_tr(firstTr) {
+	    let children = firstTr.children;
+	    
+	    children = Array.isArray(children) ? children : Object.values(children);
+	    children.forEach(x=>{
+	        if(x !== firstTr.lastElementChild)
+	        {
+	            x.firstElementChild.value = '';
+	        }
+	    });
+	}
+
+	function remove_tr(This) {
+	    if(This.closest('tbody').childElementCount == 1)
+	    {
+	        alert("You Don't have Permission to Delete This ?");
+	    }else{
+	        This.closest('tr').remove();
+	    }
+	}
+	 </script>
 </head>
+<<<<<<< HEAD
+<body onload="get_date()">
+	<form method="POST" action="https://api.sheetmonkey.io/form/7QJpfBYDnYZn5ePqAPvMJZ">
+	  <table class="_table">
+	    <thead>
+	      <th>Date</th>
+	      <th>Exercise</th>
+	      <th>Sets</th>
+	      <th>Reps</th>
+	      <th>Kg</th>
+	      <th>Note</th>
+	    </thead>
+        <tbody id="table_body">
+			<tr>
+        		<td>
+        			<input type="text" id="date" name="date" readonly></td> <!-- DATA -->
+			  	<td>
+			  	<select id="code" name="code"> <!-- è NAME che crea la colonna -->.
+					<option value=""></option>
+					<option value="E001">Bench press db</option>
+					<option value="E002">Crunch</option>
+					<option value="E023">Push-up diamond</option>
+					<option value="E024">Push-up inclined</option>
+					<option value="E025">Tricep extensions</option>
+				</select></td>
+        		<td>
+					<input type="number" step="1" min="0" max="10" id="sets" name="sets" value="" placeholder="Sets"></td> <!-- SETS -->
+				<td>
+					<input type="number" step="0.5" min="0" max="100" id="reps" name="reps" value="" placeholder="Reps"></td> <!-- REPS -->
+				<td>
+					<input type="number" step="1" min="0" max="100" id="kg" name="kg" value="" placeholder="Kg"></td> <!-- KG -->
+				<td>
+					<input type="text" id="note" name="note" value="" placeholder="Note"></td> <!-- NOTE -->
+            	<td>
+          			<button onclick="create_tr('table_body')">+</button></td>
+        	</tr>
+        	<tr>
+        		<td>
+        			<div id="riga"></div></td>
+        	</tr>
+        	<tr>
+	    </tbody>
+	  </table>
+		<button type="submit">Conferma</button></td>
+=======
 <body>
 	<form 
 		method="POST" 
@@ -38,6 +119,7 @@
 			<button type="button">Annulla</button>
 		</a>
 
+>>>>>>> af40d3130f463204622606bf58192549e11ca216
 	</form>
 </body>
 </html>
