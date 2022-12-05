@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Offline logger</title>
+	<title>Workout logger</title>
 	<script>
 	function get_date(){
-		var ora = new Date().toISOString().slice(0, 19).replace('T',' ');
+		var ora = new Date().toLocaleDateString('it-IT', {weekday: 'long',day: 'numeric',month: 'numeric',hour: 'numeric',minute: 'numeric',second: 'numeric',});
 	 	document.getElementById("date").value = ora;
 	 }
 	function create_tr(table_id) {
@@ -16,7 +16,7 @@
 
 	    table_body.append(tr_clone);
 
-	    clean_first_tr(table_body.firstElementChild);
+	    // clean_first_tr(table_body.firstElementChild);
 	}
 
 	function clean_first_tr(firstTr) {
@@ -52,7 +52,7 @@
 	      <th>Kg</th>
 	      <th>Note</th>
 	    </thead>
-        <tbody id="table_body">
+        <tbody id="tabella_corpo">
 			<tr>
         		<td>
         			<input type="text" id="date" name="date" readonly></td> <!-- DATA -->
@@ -74,7 +74,7 @@
 				<td>
 					<input type="text" id="note" name="note" value="" placeholder="Note"></td> <!-- NOTE -->
             	<td>
-          			<button onclick="create_tr('table_body')">+</button></td>
+          			<button onclick="create_tr('tabella_corpo')">+</button></td>
         	</tr>
         	<tr>
         		<td>
