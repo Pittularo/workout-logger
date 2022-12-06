@@ -7,7 +7,8 @@
 	<script>
 	function get_date(){
 		var ora = new Date().toLocaleDateString('it-IT', {weekday: 'long', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'});
-	 	document.getElementById("date").value = ora;
+	 	//document.getElementById("date").value = ora;
+	 	return ora;
 	 }
 	function create_tr(table_id) {
 	    let table_body = document.getElementById(table_id),
@@ -16,24 +17,14 @@
 
 	    table_body.append(tr_clone);
 	    clean_last_tr(table_body.lastElementChild);
+		first_tr.firstElementChild.value = "fsdfsdfsdfsd";
+		console.log(first_tr.firstElementChild.value);
 	}
 	function clean_last_tr(lastTr) {
 	    let children = lastTr.children;
 	    children = Array.isArray(children) ? children : Object.values(children);
-	    children.forEach(x=>{
-	        if(x !== lastTr.lastElementChild)
-	        {
-	            x.firstElementChild.value = '';
-	        }
-	    });
-	}
-	function remove_tr(This) {
-	    if(This.closest('tbody').childElementCount == 1)
-	    {
-	        alert("You Don't have Permission to Delete This ?");
-	    }else{
-	        This.closest('tr').remove();
-	    }
+	    children.forEach(x=>{x.firstElementChild.value = '';});
+		//children[6].firstElementChild.hidden = true;
 	}
 	 </script>
 </head>
@@ -70,11 +61,7 @@
 				<td>
 					<input type="text" id="note" name="note" value="" placeholder="Note"></td> <!-- NOTE -->
             	<td>
-<<<<<<< HEAD
-          			<button onclick="create_tr('tabella_corpo')">+</button></td>
-=======
-          			<button onclick="create_tr('table_body')" type="button">+</button></td>
->>>>>>> 5612df2c0f91629ea7ff90c91456eda65a8d57fa
+          			<button onclick="create_tr('tabella_corpo')" type="button">+</button></td> <!-- TASTO -->
         	</tr>
 	    </tbody>
 	  </table>
