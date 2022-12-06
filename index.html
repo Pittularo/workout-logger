@@ -7,28 +7,24 @@
 	<script>
 	function get_date(){
 		var ora = new Date().toLocaleDateString('it-IT', {weekday: 'long', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'});
-	 	//document.getElementById("date").value = ora;
 	 	return ora;
 	 }
 	function create_tr(table_id) {
 	    let table_body = document.getElementById(table_id),
-	        first_tr   = table_body.firstElementChild
+	        first_tr   = table_body.lastElementChild
 	        tr_clone   = first_tr.cloneNode(true);
 
 	    table_body.append(tr_clone);
-	    clean_last_tr(table_body.lastElementChild);
-		first_tr.firstElementChild.value = "fsdfsdfsdfsd";
-		console.log(first_tr.firstElementChild.value);
-	}
-	function clean_last_tr(lastTr) {
-	    let children = lastTr.children;
-	    children = Array.isArray(children) ? children : Object.values(children);
-	    children.forEach(x=>{x.firstElementChild.value = '';});
-		//children[6].firstElementChild.hidden = true;
+
+	    let cacca = first_tr.children
+	    cacca[0].firstElementChild.value = get_date();
+	    cacca[6].firstElementChild.hidden = true;
+	    cacca = Array.isArray(cacca) ? cacca : Object.values(cacca);
+		cacca.forEach(x=>{x.firstElementChild.setAttribute('disabled', '');});
 	}
 	 </script>
 </head>
-<body onload="get_date()">
+<body>
 	<form method="POST" action="https://api.sheetmonkey.io/form/7QJpfBYDnYZn5ePqAPvMJZ">
 	  <table class="_table">
 	    <thead>
@@ -46,11 +42,31 @@
 			  	<td>
 			  	<select id="code" name="code"> <!-- è NAME che crea la colonna -->.
 					<option value=""></option>
-					<option value="E001">Bench press db</option>
+					<<option value="E001">Bench press db</option>
+					<option value="E010">Bent-over row</option>
+					<option value="E013">Bulgarian split squat</option>
+					<option value="E018">Calf raise</option>
 					<option value="E002">Crunch</option>
+					<option value="E003">Curl</option>
+					<option value="E009">Deadlift</option>
+					<option value="E019">Dips</option>
+					<option value="E014">Face pull</option>
+					<option value="E012">Front raises</option>
+					<option value="E017">Hip thrust</option>
+					<option value="E020">Inclined db fly</option>
+					<option value="E016">Inclined db press</option>
+					<option value="E015">Lying hamstring db curl</option>
+					<option value="E021">Plank</option>
+					<option value="E007">Pull-up</option>
+					<option value="E008">Push-up</option>
+					<option value="E022">Push-up declined</option>
 					<option value="E023">Push-up diamond</option>
 					<option value="E024">Push-up inclined</option>
+					<option value="E004">Shoulder press</option>
+					<option value="E005">Side raises</option>
+					<option value="E006">Squat</option>
 					<option value="E025">Tricep extensions</option>
+					<option value="E011">Tricep kickbacks</option>
 				</select></td>
         		<td>
 					<input type="number" step="1" min="0" max="10" id="sets" name="sets" value="" placeholder="Sets"></td> <!-- SETS -->
@@ -66,7 +82,7 @@
 	    </tbody>
 	  </table>
 	<div style="height:0.5em;"></div>
-	<button type="submit">Conferma</button></td>
+	<button type="submit">Fine workout</button></td>
 	</form>
 </body>
 </html>
