@@ -4,5 +4,11 @@ const object1 = {
   c: false
 };
 
-console.log(Object.values(object1));
-// expected output: Array ["somestring", 42, false]
+//Object.values(object1).forEach(x=>{console.log('ciao ' + x)});
+
+let text = ""
+for (let i = 0; i < 5; i++) {
+  text = "The number is " +(Object.values(object1).length - i);
+  console.log(text)
+}
+
