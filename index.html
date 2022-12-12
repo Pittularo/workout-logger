@@ -39,8 +39,7 @@
 	}
 	 </script>
 </head>
-<body style="background-color: #ff8888;">
-	<form method="POST" action="https://api.sheetmonkey.io/form/7QJpfBYDnYZn5ePqAPvMJZ">
+<body onload="get_date()" style="background-color: #88ff88;">
 	  <table class="_table">
 	    <thead>
 	      <th>Date</th>
@@ -52,8 +51,9 @@
 	    </thead>
         <tbody id="tabella_corpo">
 			<tr>
+			<form method="POST" action="https://api.sheetmonkey.io/form/7QJpfBYDnYZn5ePqAPvMJZ">
         		<td>
-        			<input type="text" id="date" name="date" readonly></td> <!-- DATA -->
+        			<input type="text" id="date" name="date" value="qui vorrei mettessi l'ora attuale" readonly></td> <!-- DATA -->
 			  	<td>
 			  	<select id="code" name="code"> <!-- è NAME che crea la colonna -->.
 					<option value=""></option>
@@ -92,12 +92,12 @@
 				<td>
 					<input type="text" id="note" name="note" value=""></td> <!-- NOTE -->
             	<td>
-          			<button onclick="create_tr('tabella_corpo')" type="button">+</button></td> <!-- TASTO -->
+          			<button onclick="create_tr('tabella_corpo')" type="submit">+</button></td> <!-- TASTO -->
+			</form>
         	</tr>
 	    </tbody>
 	  </table>
 	<div style="height:0.5em;"></div>
-	<button type="submit">Fine workout</button></td>
-	</form>
+	<button>Fine workout</button></td>
 </body>
 </html>
