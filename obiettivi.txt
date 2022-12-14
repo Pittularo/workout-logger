@@ -2,11 +2,20 @@ obiettivi:
 
 	Javascript:
 	- scolonnare i risultati che sheet monkey mi spara nel foglio elettronico
-		- inviare riga x riga
-			- form nel form, ogni button è un submit di un form-riga
+		X- O REDIRECT su html con campi aggiunti (si può ingrandire all'infinito?)
+		X- oppure manda form senza refreshare pagina
+		X- oppure impara a storare i dati del form in un array
+		- oppure lascia così, lavora poi con onOpen event però
 	- se tutti i valori dell'ultima riga sono vuoti, allora spara lo sheet
+		- attiva invia
+		- on click
 	- clonare anche il valore della tendina
+	- 
 
 
 	Google App Script:
 	- script che come apre mi mette le formule (google app script)
+
+
+	Mobile friendly:
+	- vedi le cssate

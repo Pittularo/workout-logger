@@ -4,84 +4,66 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Workout logger</title>
-	<script>
+<script>
+	var array0   = ['E001', 'Bench press db', 
+					'E010', 'Bent-over row', 
+					'E013', 'Bulgarian split squat', 
+					'E018', 'Calf raise', 
+					'E002', 'Crunch', 
+					'E003', 'Curl', 
+					'E009', 'Deadlift', 
+					'E019', 'Dips', 
+					'E014', 'Face pull', 
+					'E012', 'Front raises', 
+					'E017', 'Hip thrust', 
+					'E020', 'Inclined db fly', 
+					'E016', 'Inclined db press', 
+					'E015', 'Lying hamstring db curl', 
+					'E021', 'Plank', 
+					'E007', 'Pull-up', 
+					'E008', 'Push-up', 
+					'E022', 'Push-up declined', 
+					'E023', 'Push-up diamond', 
+					'E024', 'Push-up inclined', 
+					'E004', 'Shoulder press', 
+					'E005', 'Side raises', 
+					'E006', 'Squat', 
+					'E025', 'Tricep extensions', 
+					'E011', 'Tricep kickbacks', ]
+
 	function get_date(){
-		var ora = new Date().toLocaleDateString('it-IT', {weekday: 'long', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'});
+		var ora = new Date().toLocaleDateString('it-IT', {weekday: 'short', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'});
 	 	return ora;
 	 }
-	function create_tr(table_id) {
-	    let table_body = document.getElementById(table_id);
-	        first_tr   = table_body.lastElementChild;
-	        tr_clone   = first_tr.cloneNode(true);
-
-	    table_body.append(tr_clone); //clona riga
-
-	    let cacca = first_tr.children; //dichiara gli elementi della prima riga
-	    cacca = Array.isArray(cacca) ? cacca : Object.values(cacca); //semplifica l'oggetto in array o quello che è
-	    cacca[0].firstElementChild.value = get_date(); //ficca la data nel primo elemento della riga che hai appena dichiarato
-	    cacca[6].firstElementChild.hidden = true; //nascondi il bottone '+'
-
-		//metti nel placeholder della nuova riga, i valori della riga precedente
-	    let last_tr = table_body.lastElementChild;
-	    	ultimo  = last_tr.children;
-	    ultimo = Array.isArray(ultimo) ? ultimo : Object.values(ultimo);
-	    // 
-		//metti come placeholder i valori della riga prima, e i placeholder lasciati vuoti falli valori
-		for (let i = 0; i < 5; i++) {
-			if (cacca[i].firstElementChild.value === "") {
-			  cacca[i].firstElementChild.value=cacca[i].firstElementChild.placeholder;
-			}
-			ultimo[i].firstElementChild.placeholder = cacca[i].firstElementChild.value;
-		}
-		for (let i = 0; i < 6; i++) {
-			ultimo[i].firstElementChild.value = "";
-		}
+	function popola_options() {
+	  let input1 = document.getElementById("code");
+	  for (i = 0; i < array0.length; i++) {
+	  	if (i % 2 === 0) { continue; }
+	  	let option = document.createElement("option");
+	  	option.text = array0[i];
+	  	option.setAttribute('value', array0[i-1]);
+		input1.add(option);
+	 }
 	}
-	 </script>
+	function dlookup(valueee) {
+		let indexo = array0.indexOf(valueee);
+	    return array0[indexo+1];
+	}
+</script>
 </head>
-<body onload="get_date()" style="background-color: #88ff88;">
+<body onload="get_date1(), popola_options()" style="background-color: #ddddff;">
+	<form method="POST" action="https://api.sheetmonkey.io/form/7QJpfBYDnYZn5ePqAPvMJZ">
 	  <table class="_table">
 	    <thead>
-	      <th>Date</th>
-	      <th>Exercise</th>
-	      <th>Sets</th>
-	      <th>Reps</th>
-	      <th>Kg</th>
-	      <th>Note</th>
+	      <th>Date</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>Kg</th><th>Note</th>
 	    </thead>
         <tbody id="tabella_corpo">
 			<tr>
-			<form method="POST" action="https://api.sheetmonkey.io/form/7QJpfBYDnYZn5ePqAPvMJZ">
         		<td>
-        			<input type="text" id="date" name="date" value="qui vorrei mettessi l'ora attuale" readonly></td> <!-- DATA -->
+        			<input type="text" id="date" name="date" readonly></td> <!-- DATA -->
 			  	<td>
 			  	<select id="code" name="code"> <!-- è NAME che crea la colonna -->.
 					<option value=""></option>
-					<option value="E001" name="Bench press db">Bench press db</option>
-					<option value="E010">Bent-over row</option>
-					<option value="E013">Bulgarian split squat</option>
-					<option value="E018">Calf raise</option>
-					<option value="E002">Crunch</option>
-					<option value="E003">Curl</option>
-					<option value="E009">Deadlift</option>
-					<option value="E019">Dips</option>
-					<option value="E014">Face pull</option>
-					<option value="E012">Front raises</option>
-					<option value="E017">Hip thrust</option>
-					<option value="E020">Inclined db fly</option>
-					<option value="E016">Inclined db press</option>
-					<option value="E015">Lying hamstring db curl</option>
-					<option value="E021">Plank</option>
-					<option value="E007">Pull-up</option>
-					<option value="E008">Push-up</option>
-					<option value="E022">Push-up declined</option>
-					<option value="E023">Push-up diamond</option>
-					<option value="E024">Push-up inclined</option>
-					<option value="E004">Shoulder press</option>
-					<option value="E005">Side raises</option>
-					<option value="E006">Squat</option>
-					<option value="E025">Tricep extensions</option>
-					<option value="E011">Tricep kickbacks</option>
 				</select></td>
         		<td>
 					<input type="number" step="1" min="0" max="10" id="sets" name="sets" value=""></td> <!-- SETS -->
@@ -92,12 +74,85 @@
 				<td>
 					<input type="text" id="note" name="note" value=""></td> <!-- NOTE -->
             	<td>
-          			<button onclick="create_tr('tabella_corpo')" type="submit">+</button></td> <!-- TASTO -->
-			</form>
+          			<button onclick="create_tr()" type="button">+</button></td> <!-- TASTO -->
         	</tr>
 	    </tbody>
 	  </table>
-	<div style="height:0.5em;"></div>
-	<button>Fine workout</button></td>
+	<div style="height:0.5em"></div> <!--spazio-->
+	<button type="button" id="finisci" style="width:7em" onclick="finisci_click()">Fine workout</button>
+	<button type="submit" id="invia" disabled>Invia</button>
+	</form>
+	<script>
+	var table_body = document.getElementById("tabella_corpo");
+	    first_tr   = table_body.lastElementChild;
+	    cacca = first_tr.children; //dichiara gli elementi della prima riga
+
+	function get_date1(){
+	 	table_body.lastElementChild.children[0].firstElementChild.placeholder = get_date()
+	 }
+	function create_tr(){
+		let first_tr   = table_body.lastElementChild;
+	    cacca = first_tr.children;
+	    table_body.append(first_tr.cloneNode(true)); //clona riga
+
+	    cacca = Array.isArray(cacca) ? cacca : Object.values(cacca); //semplifica l'oggetto in array o quello che è
+	    cacca[0].firstElementChild.value = get_date(); //ficca la data nel primo elemento della riga che hai appena dichiarato
+	    cacca[6].firstElementChild.hidden = true; //nascondi il bottone '+'
+
+		//metti nel placeholder della nuova riga, i valori della riga precedente
+	    let last_tr = table_body.lastElementChild;
+	    	ultimo  = last_tr.children;
+
+	    ultimo = Array.isArray(ultimo) ? ultimo : Object.values(ultimo);
+		//metti come placeholder i valori della riga prima, e i placeholder lasciati vuoti falli valori
+		for (let i = 0; i < 5; i++) {
+			if (cacca[i].firstElementChild.value === "") {
+			  cacca[i].firstElementChild.value=cacca[i].firstElementChild.placeholder;
+			}
+			ultimo[i].firstElementChild.placeholder = cacca[i].firstElementChild.value;
+		}
+		for (let i = 0; i < 6; i++) {
+			ultimo[i].firstElementChild.value = "";
+		}
+	    ultimo[1].firstElementChild.children[0].text = dlookup(cacca[1].firstElementChild.value); // clona FINALMENTE la tendina esercizio
+	 }	
+	function finisci_click() { //if innerText 1 fai così, if innerText 2 fai colà
+			let first_tr   = table_body.lastElementChild;
+			    cacca = first_tr.children;
+	 			finisci_btn = document.getElementById("finisci");
+	 			finisci_txt = finisci_btn.innerText;
+
+	 		if (finisci_txt === "Fine workout") {
+			  finisci_click1(cacca);
+			} else if (finisci_txt === "Revert") {
+			  finisci_click2(cacca);			
+			}
+	 }
+	function finisci_click1(cacca) { //if innerText 1
+			let	finisci_btn = document.getElementById("finisci");
+				invia_btn   = document.getElementById("invia");
+
+		    cacca = Array.isArray(cacca) ? cacca : Object.values(cacca); //semplifica l'oggetto in array o quello che è
+		    cacca[0].firstElementChild.value = get_date(); //ficca la data nel primo elemento della riga che hai appena dichiarato
+		    cacca[6].firstElementChild.hidden = true; //nascondi il bottone '+'
+			for (let i = 0; i < 5; i++) { // placeholder lasciati vuoti diventano valori
+				if (cacca[i].firstElementChild.value === "") {
+				  cacca[i].firstElementChild.value=cacca[i].firstElementChild.placeholder;
+				}
+			}
+
+			invia_btn.disabled = false
+			finisci_btn.innerText = "Revert"
+	 }
+	function finisci_click2() { //if innerText 2
+			let	finisci_btn = document.getElementById("finisci");
+				invia_btn   = document.getElementById("invia");
+
+			cacca[6].firstElementChild.hidden = false; //rimetti il bottone '+'
+			invia_btn.disabled = true
+			finisci_btn.innerText = "Fine workout"
+	 }
+	setInterval(get_date1, 1000) //aggiorna get_date ogni 1 secondo
+	</script>
 </body>
 </html>
