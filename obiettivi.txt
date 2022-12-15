@@ -6,16 +6,13 @@ obiettivi:
 		X- oppure manda form senza refreshare pagina
 		X- oppure impara a storare i dati del form in un array
 		- oppure lascia così, lavora poi con onOpen event però
-	- se tutti i valori dell'ultima riga sono vuoti, allora spara lo sheet
-		- attiva invia
-		- on click
-	- clonare anche il valore della tendina
 	- 
 
 
 	Google App Script:
-	- script che come apre mi mette le formule (google app script)
-
+	- cancellare righe arrayate
+	- formule in caselle
+	- sortLog()
 
 	Mobile friendly:
 	- vedi le cssate
