@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Form per archiviare dati in CSV con JavaScript</title>
+  </head>
+  <body>
+    <form id="form">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome"><br>
+
+      <label for="cognome">Cognome:</label>
+      <input type="text" id="cognome" name="cognome"><br>
+
+      <label for="altro">Altro:</label>
+      <input type="text" id="altro" name="altro"><br>
+
+      <input type="submit" value="Invia">
+    </form>
+
+    <script>
+      const form = document.getElementById("form");
+
+      form.addEventListener("submit", function (event) {
+
+        const fs = require('fs');
+
+        // Dati da aggiungere
+        const newData = '1;2;3\n4;5;6';
+
+        // Nome del file CSV esistente
+        const fileName = 'data.csv';
+
+        // Aggiungi i dati al file esistente
+        fs.appendFileSync(fileName, newData);
+        fs.appendFile(fileName, newData);
+
+      });
+    </script>
+  </body>
+</html>
