@@ -17,25 +17,5 @@
 
       <input type="submit" value="Invia">
     </form>
-
-    <script>
-      const form = document.getElementById("form");
-
-      form.addEventListener("submit", function (event) {
-
-        const fs = require('fs');
-
-        // Dati da aggiungere
-        const newData = '1;2;3\n4;5;6';
-
-        // Nome del file CSV esistente
-        const fileName = 'data.csv';
-
-        // Aggiungi i dati al file esistente
-        fs.appendFileSync(fileName, newData);
-        fs.appendFile(fileName, newData);
-
-      });
-    </script>
   </body>
 </html>
