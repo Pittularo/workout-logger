@@ -7,15 +7,50 @@
   <body>
     <form id="form">
       <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome"><br>
+      <input type="text" id="nome" name="nome" value="Giovanni"><br>
 
       <label for="cognome">Cognome:</label>
-      <input type="text" id="cognome" name="cognome"><br>
+      <input type="text" id="cognome" name="cognome" value="Vernia"><br>
 
       <label for="altro">Altro:</label>
-      <input type="text" id="altro" name="altro"><br>
+      <input type="text" id="altro" name="altro" value="molto simpatttico"><br>
 
-      <input type="submit" value="Invia">
+      <input type="button" id="bt" value="Invia" onclick="saveFile()"/>
     </form>
+    <script type="text/javascript">
+      let saveFile = () => {
+          // Get the data from each element on the form.
+          const name = document.getElementById("nome");
+          const age = document.getElementById("cognome");
+          const email = document.getElementById("altro");
+
+          // This variable stores all the data.
+          let data = name.value + ";" + age.value + ";" + email.value;
+          // Convert the text to BLOB.
+          const textToBLOB = new Blob([data], { type: "text/plain" });
+          const sFileName = new Date(); // The file to save the data.
+
+          const fs = require('fs');
+          fs.appendFile('data.csv', data, (err) => {
+            if (err) throw err;
+            console.log('Error!!!');
+          });
+
+          /*
+          let newLink = document.createElement("a");
+          newLink.download = new Date();
+
+          if (window.webkitURL != null) {
+              newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+          } else {
+              newLink.href = window.URL.createObjectURL(textToBLOB);
+              newLink.style.display = "none";
+              document.body.appendChild(newLink);
+          }
+
+          newLink.click();
+          */
+      };
+    </script>
   </body>
 </html>
