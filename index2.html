@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <title>Form per archiviare dati in CSV con JavaScript</title>
+      <script type="text/javascript">
+      </script>
   </head>
   <body>
     <form id="form">
@@ -17,6 +19,7 @@
 
       <input type="button" id="bt" value="Invia" onclick="saveFile()"/>
     </form>
+    <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
     <script type="text/javascript">
       let saveFile = () => {
           // Get the data from each element on the form.
@@ -27,14 +30,11 @@
           // This variable stores all the data.
           let data = name.value + ";" + age.value + ";" + email.value;
           // Convert the text to BLOB.
-          const textToBLOB = new Blob([data], { type: "text/plain" });
+          const textToBLOB = new Blob([data], { type: "text/plain;charset=utf-8" });
           const sFileName = new Date(); // The file to save the data.
 
-          const fs = require('fs');
-          fs.appendFile('data.csv', data, (err) => {
-            if (err) throw err;
-            console.log('Error!!!');
-          });
+          // Use the FileSaver.js library to save the Blob object to a file
+          saveAs(textToBLOB, "data.txt");
 
           /*
           let newLink = document.createElement("a");
