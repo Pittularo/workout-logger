@@ -52,7 +52,7 @@
 </script>
 </head>
 <body onload="get_date1(), popola_options()" style="background-color: #ddddff;">
-	<form method="POST" onsubmit="">
+    <form id="form" method="get">
 	  <table class="_table">
 	    <thead>
 	      <th>Date</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>Kg</th><th>Note</th>
@@ -82,6 +82,7 @@
 	<button type="button" id="finisci" style="width:7em" onclick="finisci_click()">Fine workout</button>
 	<button type="submit" id="invia" disabled>Invia</button>
 	</form>
+	<script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
 	<script>
 	var table_body = document.getElementById("tabella_corpo");
 	    first_tr   = table_body.lastElementChild;
@@ -123,6 +124,8 @@
 	 			finisci_txt = finisci_btn.innerText;
 				invia_btn   = document.getElementById("invia");
 			    rowz        = table_body.children.length;
+
+			console.log(table_body.children[0].children[0]);
 
 	 		if (finisci_txt === "Fine workout") {
 			  finisci_click1(cacca, finisci_btn, invia_btn, rowz);
