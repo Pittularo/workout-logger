@@ -32,7 +32,8 @@
 					'E011', 'Tricep kickbacks', ]
 
 	function get_date(){
-		var ora = new Date().toLocaleDateString('en-US', {weekday: 'short', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'});
+		var ora = new Date().toLocaleDateString('fr-FR', {weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'});
+		//because french people are the only ones that can eliminate the comma with NO regret at all
 	 	return ora;
 	 }
 	function popola_options() {
@@ -52,7 +53,7 @@
 </script>
 </head>
 <body onload="get_date1(), popola_options()" style="background-color: #ddddff;">
-	<form method="POST" action="https://api.sheetmonkey.io/form/7Y33vtpmDS8W9afXwzhrcQ">
+	<form method="POST" action="https://api.sheetmonkey.io/form/eAqFXeCB3zky7Zw3vBHWzu">
 	  <table class="_table">
 	    <thead>
 	      <th>Date</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>Kg</th><th>Note</th>
@@ -87,26 +88,8 @@
 	    first_tr   = table_body.lastElementChild;
 	    cacca = first_tr.children; //dichiara gli elementi della prima riga
 
-    function formSubmit() {
-	  var url = "https://api.sheetmonkey.io/form/7Y33vtpmDS8W9afXwzhrcQ";
-	  var request = new XMLHttpRequest();
-	  request.open('POST', url, true);
-	  request.onload = function() { // request successful
-	  // we can use server response to our request now
-	    console.log(request);
-	  };
-
-	  request.onerror = function() {
-	    // request failed
-	  };
-
-	  request.send(); // create FormData from form that triggered event
-	  //event.preventDefault();
-	  return false;
-	}
-
 	function get_date1(){
-	 	table_body.lastElementChild.children[0].firstElementChild.placeholder = get_date()
+	 	table_body.lastElementChild.children[0].firstElementChild.value = get_date()
 	 }
 	function create_tr(){
 		let first_tr   = table_body.lastElementChild;

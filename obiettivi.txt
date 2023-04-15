@@ -1,5 +1,9 @@
 obiettivi:
 
+	1. formule in colonna C
+	2. formule numeriche più avanti
+
+
 	Javascript:
 	- scolonnare i risultati che sheet monkey mi spara nel foglio elettronico
 		X- O REDIRECT su html con campi aggiunti (si può ingrandire all'infinito?)
