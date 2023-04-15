@@ -51,8 +51,14 @@
 	    return array0[indexo+1];
 	}
 </script>
+<script>
+	// PREVENT IL REFRESH RANDOMICO
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 </head>
-<body onload="get_date1(), popola_options()" style="background-color: #99aaff;">
+<body onload="get_date1(), popola_options()" style="background-color: #FF11CC;">
 	<form method="POST" action="https://api.sheetmonkey.io/form/eAqFXeCB3zky7Zw3vBHWzu">
 	  <table class="_table">
 	    <thead>
