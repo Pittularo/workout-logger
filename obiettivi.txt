@@ -2,6 +2,7 @@ obiettivi:
 
 - quando clicchi invia, fai value i placeholder non toccati
 
+
 0. mobile versione css
 - scolonnare i risultati che sheet monkey mi spara nel foglio elettronico
 1. formule in colonna C
@@ -11,49 +12,3 @@ obiettivi:
 
 
 
-
-OLD SHIT:
-
-	function finisci_click() { //if innerText 1 fai così, if innerText 2 fai colà
-			let first_tr    = table_body.lastElementChild;
-			    cacca       = first_tr.children;
-	 			finisci_btn = document.getElementById("finisci");
-	 			finisci_txt = finisci_btn.innerText;
-				invia_btn   = document.getElementById("invia");
-			    rowz        = table_body.children.length;
-
-	 		if (finisci_txt === "Fine workout") {
-			  finisci_click1(cacca, finisci_btn, invia_btn, rowz);
-			} else if (finisci_txt === "Revert") {
-			  finisci_click2(cacca, finisci_btn, invia_btn, rowz);			
-			}
-	 }
-	function finisci_click1(cacca, finisci_btn, invia_btn) { //if innerText 1
-		    cacca = Array.isArray(cacca) ? cacca : Object.values(cacca); //semplifica l'oggetto in array o quello che è
-		    cacca[0].firstElementChild.value = get_date(); //ficca la data nel primo elemento della riga che hai appena dichiarato
-		    cacca[6].firstElementChild.hidden = true; //nascondi il bottone '+'
-			for (let i = 0; i < 5; i++) { // placeholder lasciati vuoti diventano valori
-				if (cacca[i].firstElementChild.value === "") {
-				  cacca[i].firstElementChild.value=cacca[i].firstElementChild.placeholder;
-				}
-			}
-			for (let i = 0; i < 6; i++) {
-				for (let j = 0; j < rowz; j++) {
-					table_body.children[j].children[i].firstElementChild.disabled = true
-				}
-			}
-
-			invia_btn.disabled = false
-			finisci_btn.innerText = "Revert"
-	 }
-	function finisci_click2(cacca, finisci_btn, invia_btn) { //if innerText 2
-			for (let i = 0; i < 6; i++) {
-				for (let j = 0; j < rowz; j++) {
-					table_body.children[j].children[i].firstElementChild.disabled = false
-				}
-			}
-
-			cacca[6].firstElementChild.hidden = false; //rimetti il bottone '+'
-			invia_btn.disabled = true
-			finisci_btn.innerText = "Fine workout"
-	 }
