@@ -22,7 +22,7 @@
   method="POST" 
   action="https://script.google.com/macros/s/AKfycbyNnXkpAM1_0ypMXYMDOgLCxprJ5a9J8XY3qZOmFkKfQHmKqn6-WbkxEgreIbtNcrP9/exec"
   id="formosa">
-    <table class="_table">
+    <table class="_table" id="tabloso">
       <thead>
         <th>Date</th><th>Exercise</th><th>Sets</th><th>Reps</th><th>Kg</th><th>Note</th>
       </thead>
@@ -51,21 +51,24 @@
   <script>
     window.addEventListener("load", function() {
       const form = document.getElementById('formosa');
+      const table = document.getElementById('tabloso');
       form.addEventListener("submit", function(e) {
         e.preventDefault();
+        const n_righe = table.rows.length;
         const formData = new FormData(form);
         const action = e.target.action;
 
       let promises = [];
-      for (let i = 1; i <= 1; i++) {
+      for (let i = 1; i < n_righe; i++) {
         promises.push(fetch(action, {
           method: 'POST',
           body: formData,
-        }))
+        }));
+        table.deleteRow(1);
       }
         Promise.all(promises)
         .then(() => { // SE ELIMINASSIMO QUESTO THEN???????????????????????????????????????????????????????????????????????
-          console.log('fine');
+          window.location.href = 'success.html';
         })
       });
     });
