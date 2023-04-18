@@ -59,45 +59,37 @@
     }
 </script>
 </head>
-<body style="background-color: #DBDD8C;">
+<body onload="get_date1(), popola_options()" style="background-color: #DBFF8C;">
+	<form id="formosa" method="POST" action="https://api.sheetmonkey.io/form/eAqFXeCB3zky7Zw3vBHWzu">			
+
+	  <input type="hidden" name="reps" id="riga1">
+	  <input type="hidden" name="reps" id="riga2">
+	  <input type="hidden" name="kg" id="riga3">
+
+
+	<div style="height:0.5em"></div> <!--spazio-->
 	<button type="submit" id="invia" onclick="togliplaceholder()">Invia</button>
+	</form>
 	<script>
-		const url = require('url')
-		const http = require('http')
-		const fs = require('fs')
-
-		const server = http.createServer((req, res)=>{
-		    switch(url.parse(req.url).pathname){
-		        case '/saveFile':
-		            let body = ''
-
-		            //saving post data into variable body
-		            req.on('data', chunk=>{
-		                 body+= chunk.toString()
-		            })
-		            req.on('end', ()=>{
-		                //reading json file
-		                fs.readFile(__dirname+'/link-data.json', (err, data)=>{
-		                    if (err) throw err
-		                    dataJson = JSON.parse(data) //object with your link-data.json file
-		                    postData = JSON.parse(body) //postData is the variable containing your data coming from the client.
-		                    dataJson.push(postData)//adds the data into the json file.
-
-		                    //Update file
-		                    fs.writeFile(__dirname+'/link-data.json', JSON.stringify(dataJson), (err)=>{
-		                      if(err) console.log(err)
-		                      res.end()
-		                    })
-		                })
-		            })
-		    }
-		})
-
-		server.listen(5000, ()=>{
-		    console.log('Server listening at port 5000!')
-		})
+	  const myArray  = ["1"];
+	  const myArray1 = [1, 3, 3];
+	  const myArray2 = ["2", 4];
+	  const myArrayString = myArray.join(",");
+	  const myArrayString1 = myArray1.join(",");
+	  const myArrayString2 = myArray2.join(",");
+	  document.getElementById("riga1").value = myArrayString;
+	  document.getElementById("riga2").value = myArrayString1;
+	  document.getElementById("riga3").value = myArrayString2;
+	  localStorage.setItem("myForm", myArrayString1);
 	</script>
 	<script>
+	var table_body = document.getElementById("tabella_corpo");
+	    first_tr   = table_body.lastElementChild;
+	    cacca = first_tr.children; //dichiara gli elementi della prima riga
+
+	function get_date1(){
+	 	table_body.lastElementChild.children[0].firstElementChild.value = get_date();
+	 }
 	function create_tr(){
 		let first_tr   = table_body.lastElementChild;
 	    cacca = first_tr.children;
@@ -136,7 +128,7 @@
 			}
 		}
 	}
-	setInterval(get_date, 1000) //aggiorna get_date ogni 1 secondo
+	setInterval(get_date1, 1000) //aggiorna get_date ogni 1 secondo
 	</script>
 </body>
 </html>
