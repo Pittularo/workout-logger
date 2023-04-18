@@ -52,12 +52,6 @@
 	    return array0[indexo+1];
 	}
 </script>
-<script>
-	// PREVENT IL REFRESH RANDOMICO
-    if ( window.history.replaceState ) {
-        window.history.replaceState( null, null, window.location.href );
-    }
-</script>
 </head>
 <body onload="get_date1(), popola_options()" style="background-color: #DBFF8C;">
 	<form method="POST" action="https://api.sheetmonkey.io/form/eAqFXeCB3zky7Zw3vBHWzu">			
@@ -84,8 +78,7 @@
             	<td>
           			<button onclick="create_tr()" type="button">+</button></td> <!-- TASTO -->
         	</tr>
-	    </tbody>
-	  </table>
+
 	<div style="height:0.5em"></div> <!--spazio-->
 	<button type="submit" id="invia" onclick="togliplaceholder()">Invia</button>
 	</form>
@@ -97,33 +90,7 @@
 	function get_date1(){
 	 	table_body.lastElementChild.children[0].firstElementChild.value = get_date();
 	 }
-	function create_tr(){
-		let first_tr   = table_body.lastElementChild;
-	    cacca = first_tr.children;
-	    table_body.append(first_tr.cloneNode(true)); //clona riga
 
-	    cacca = Array.isArray(cacca) ? cacca : Object.values(cacca); //semplifica l'oggetto in array o quello che è
-	    cacca[0].firstElementChild.value = get_date(); //ficca la data nel primo elemento della riga che hai appena dichiarato
-	    cacca[6].firstElementChild.hidden = true; //nascondi il bottone '+'
-
-		//metti nel placeholder della nuova riga, i valori della riga precedente
-	    let last_tr = table_body.lastElementChild;
-	    	ultimo  = last_tr.children;
-
-	    ultimo = Array.isArray(ultimo) ? ultimo : Object.values(ultimo);
-		//metti come placeholder i valori della riga prima, e i placeholder lasciati vuoti falli valori
-		for (let i = 0; i < 5; i++) {
-			if (cacca[i].firstElementChild.value === "") {
-			  cacca[i].firstElementChild.value=cacca[i].firstElementChild.placeholder;
-			}
-			ultimo[i].firstElementChild.placeholder = cacca[i].firstElementChild.value;
-		}
-		for (let i = 0; i < 6; i++) {
-			ultimo[i].firstElementChild.value = "";
-		}
-	    ultimo[1].firstElementChild.children[0].text = dlookup(cacca[1].firstElementChild.value); // clona FINALMENTE la tendina esercizio
-	    ultimo[1].firstElementChild.removeAttribute("required"); //togli il required che tanto l'empty space non c'è più
-	 }	
 	function togliplaceholder(){
 		let first_tr    = table_body.lastElementChild;
 		    cacca       = first_tr.children;
