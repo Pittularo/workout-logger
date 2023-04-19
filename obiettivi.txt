@@ -1,12 +1,10 @@
 obiettivi:
 
-- quando clicchi invia, fai value i placeholder non toccati
-
-
-0. mobile versione css
-- scolonnare i risultati che sheet monkey mi spara nel foglio elettronico
-1. formule in colonna C
-2. formule numeriche più avanti
+- mobile versione css
+	- spugnettare con css
+	- creare il file e le classi
+- formule in colonna C
+- formule numeriche più avanti
 
 
 
